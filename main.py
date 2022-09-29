@@ -51,8 +51,8 @@ def validate_add(data):
 
     add_type, name, security_level = command
 
-    if len(name) > 20 or len(name) < 1:  # check name length
-        print('Bad Instruction : ' + data)
+    if len(name) > 300 or len(name) < 1:  # setting upper and lower bound for name length
+        print('Bad Instruction -- (names too long) : ' + data)
         return
 
     if security_level.upper() not in security_levels:  # validate security level
