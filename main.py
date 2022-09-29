@@ -4,6 +4,12 @@ from subject_class import Subject
 from object_class import Object
 from referencemonitor import ReferenceMonitor
 
+'''
+    - Massimiliano Celant - mc1189 - 9/29/2022
+    - CSCE 3550 - Project 1
+'''
+
+
 refMon = ReferenceMonitor()  # create global reference monitor object
 
 
