@@ -98,17 +98,7 @@ class ReferenceMonitor:
         else:
             o.balance -= amount
             print('Access Granted:' + f' withdraw {s.name} {o.name} {amount}')
-        
-          
-    
-        
-    def print_objects(self):
-        print(self.object_levels)
-    
-    
-    def print_subjects(self):
-        print(self.subject_levels)
-    
+                
     
     # prints the current object and subjects 
     def print_status(self):
