@@ -1,3 +1,5 @@
+import sys
+
 from subject_class import Subject
 from object_class import Object
 from referencemonitor import ReferenceMonitor
@@ -71,8 +73,16 @@ def add_to_referencemonitor(add_type, name, security_level):
 
 
 def main():
-    while True:
-        cli_input = input()
+    # attempt to open text file
+    try:
+        file_name = sys.argv[1]
+        f = open(file_name, 'r')
+    except:
+        print(f'Unable to open {sys.argv[1]}... Terminating')
+        return
+
+    for line in f:
+        cli_input = line.strip()  # gets rid of whitespace
         # check if user is trying to add an subject/object
         if cli_input[:6].lower() == 'addsub' or cli_input[:6].lower() == 'addobj':
             validate_add(cli_input)
@@ -83,7 +93,7 @@ def main():
 
         # check if user wants to see status
         elif cli_input.lower() == 'status':
-            refMon.print_status()
+            refMon.print_status('Current State')
 
         # check if user wants to make a deposit or withdraw
         elif cli_input[:7].lower() == 'deposit' or cli_input[:8].lower() == 'withdraw':
@@ -91,6 +101,9 @@ def main():
 
         else:
             print('Bad Instruction : ' + cli_input)
+
+    refMon.print_status(' Final State')
+    f.close()
 
 
 if __name__ == '__main__':
